@@ -13,7 +13,7 @@ export function LocationList({ list }: PropTypes) {
         flex: 1,
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "start",
         alignItems: "center",
         overflowY: "scroll",
         height: "600px",

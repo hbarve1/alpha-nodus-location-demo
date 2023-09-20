@@ -1,22 +1,40 @@
-import Button from "@mui/material/Button";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import RotateRightIcon from "@mui/icons-material/RotateRight";
 import CachedIcon from "@mui/icons-material/Cached";
 import AddIcon from "@mui/icons-material/Add";
-// import { Box } from "@mui/material";
+import Button from "@mui/material/Button";
+// import debounce from "lodash/debounce";
+
 import { Search } from "./Search";
 import { Filter } from "./Filter";
 import { LocationList } from "./LocationList";
 import { LOCATION_LIST } from "../graphql/queries/query";
-import { useQuery } from "@apollo/client";
-import RotateRightIcon from "@mui/icons-material/RotateRight";
 
 export function LeftLocationNav() {
+  const navigate = useNavigate();
+  const [searchText, setSearchText] = useState("");
+  const [status, setStatus] = useState("");
+
   const { loading, error, data, refetch, fetchMore } = useQuery(LOCATION_LIST, {
     variables: {
       tenant: import.meta.env.VITE_TENANT,
+      name: searchText,
+      status,
     },
   });
 
-  console.log({ data });
+  const handleClickAddButton = () => {
+    navigate(`/locations/new`);
+  };
+
+  useEffect(() => {
+    // debounce(refetch, 500);
+    refetch();
+  }, [searchText, refetch, status]);
+
+  // console.log(status);
 
   return (
     <div>
@@ -33,16 +51,17 @@ export function LeftLocationNav() {
 
         <h2 style={{ margin: 0 }}>Locations</h2>
 
-        <Button>
+        <Button onClick={handleClickAddButton}>
           <AddIcon />
         </Button>
       </div>
 
       <div>
-        <Search />
+        <Search {...{ searchText, setSearchText }} />
       </div>
+
       <div>
-        <Filter />
+        <Filter {...{ status, setStatus }} />
       </div>
 
       {loading && <RotateRightIcon />}
