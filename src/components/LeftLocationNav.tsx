@@ -11,7 +11,7 @@ import { useLocationList } from "../hooks/useLocationList";
 import {
   Container,
   FilterRow,
-  H2,
+  H2Styled,
   HeaderRow,
   SearchRow,
 } from "./LeftLocationNav.style";
@@ -48,7 +48,7 @@ export function LeftLocationNav() {
           <CachedIcon />
         </Button>
 
-        <H2>Locations</H2>
+        <H2Styled>Locations</H2Styled>
 
         <Button onClick={handleClickAddButton}>
           <AddIcon />

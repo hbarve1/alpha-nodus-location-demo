@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useLazyQuery } from "@apollo/client";
 
+import uniqBy from "lodash/uniqBy";
+
 import { LOCATION_LIST } from "../graphql/queries/query";
 import { TypeLocation } from "../types";
 
@@ -29,7 +31,9 @@ export function useLocationList() {
     });
     pageRef.current = pageRef.current + 1;
 
-    setList((prev) => [...prev, ...(res?.data?.locationList?.resources || [])]);
+    setList((prev) =>
+      uniqBy([...prev, ...(res?.data?.locationList?.resources || [])], "id"),
+    );
   };
 
   useEffect(() => {
