@@ -1,21 +1,14 @@
 import Button from "@mui/material/Button";
+import { Container } from "./Filter.style";
 
+// TODO: filter queries are not working so skipping this for now
 export function Filter({
   setStatus,
 }: {
-  status: string;
   setStatus: React.Dispatch<React.SetStateAction<string>>;
 }) {
   return (
-    <div
-      style={{
-        // flex: 1,
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        // width: "100%",
-      }}
-    >
+    <Container>
       <Button type="button" sx={{ p: "10px" }} onClick={() => setStatus("")}>
         Filter 1
       </Button>
@@ -36,6 +29,6 @@ export function Filter({
       <Button type="button" sx={{ p: "10px" }}>
         Filter 4
       </Button>
-    </div>
+    </Container>
   );
 }

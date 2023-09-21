@@ -23,8 +23,6 @@ export function LocationNewPage() {
     setName("");
   };
 
-  // console.log({ name, data });
-
   return (
     <Paper
       style={{

@@ -8,7 +8,7 @@ import { Header } from "../components/Header";
 
 export function HomePage() {
   return (
-    <div>
+    <>
       <Header />
       <Grid container spacing={2} style={{ padding: "4px" }}>
         <Grid item xs={4}>
@@ -19,6 +19,6 @@ export function HomePage() {
           <Outlet />
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 }

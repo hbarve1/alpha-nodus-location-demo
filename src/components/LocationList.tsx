@@ -1,5 +1,6 @@
 import { TypeLocation } from "../types";
 import { LocationCard } from "./LocationCard";
+import { Container } from "./LocationList.style";
 
 type PropTypes = {
   list: TypeLocation[];
@@ -7,18 +8,10 @@ type PropTypes = {
 
 export function LocationList({ list }: PropTypes) {
   return (
-    <div
-      style={{
-        flex: 1,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "center",
-      }}
-    >
+    <Container>
       {list?.map((item) => {
         return <LocationCard key={item.id} {...item} />;
       })}
-    </div>
+    </Container>
   );
 }
