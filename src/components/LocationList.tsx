@@ -3,7 +3,6 @@ import { LocationCard } from "./LocationCard";
 
 type PropTypes = {
   list: TypeLocation[];
-  fetchMore?: () => void;
 };
 
 export function LocationList({ list }: PropTypes) {
@@ -15,8 +14,6 @@ export function LocationList({ list }: PropTypes) {
         flexDirection: "column",
         justifyContent: "start",
         alignItems: "center",
-        overflowY: "scroll",
-        height: "600px",
       }}
     >
       {list?.map((item) => {

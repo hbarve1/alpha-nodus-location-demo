@@ -1,8 +1,20 @@
 import { gql } from "@apollo/client";
 
 export const LOCATION_LIST = gql`
-  query LocationList($tenant: String!, $name: String, $status: String) {
-    locationList(tenant: $tenant, name: $name, status: $status) {
+  query LocationList(
+    $tenant: String!
+    $name: String
+    $status: String
+    $page: Int
+    $limit: Int
+  ) {
+    locationList(
+      tenant: $tenant
+      name: $name
+      status: $status
+      page: $page
+      limit: $limit
+    ) {
       pages
       resources {
         address
